@@ -9,6 +9,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('public'))
 
+require('./controllers/admin')(app);
 require('./controllers/auth')(app);
 require('./controllers/question')(app);
 

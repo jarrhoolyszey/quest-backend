@@ -4,25 +4,17 @@ const User = require('../models/user');
 
 const router = express.Router();
 
+// List all users
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.find();
 
-router.get('/', (req, res) => {
-  res.send('OK from user controller');
-});
+    return res.send( users );
 
-router.get('/:userId', (req, res) => {
-  res.send('OK from user controller');
-});
-
-router.post('/:userId', (req, res) => {
-  res.send('OK from user controller');
-});
-
-router.put('/:userId', (req, res) => {
-  res.send('OK from user controller');
-});
-
-router.delete('/:userId', (req, res) => {
-  res.send('OK from user controller');
+  } catch (err) {
+    console.log( err.message );
+    return res.status(400).send( 'Failed on loading users.' );
+  }
 });
 
 module.exports = app => app.use('/users', router);

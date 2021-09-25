@@ -1,29 +1,30 @@
-(function (w, d) {
+(function (w, d, qns) {
+
+  
+
   const nickname = d.getElementById('nickname');
   const password = d.getElementById('password');
   const submit   = d.getElementById('submit-btn');
 
-  submit.addEventListener('click', async () => {
-    const response = await fetch('http://localhost:3000/auth/admin', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
+  submit.addEventListener('click', async () => {    
+    try {
+      const response = await qns.api.post('auth/admin', {
         nickname: nickname.value,
-        password: password.value
-      })
-    })
+        password: password.value,
+      });
+      
+      const { token, admin } = response.data;
 
-    console.log(response);
+      qns.api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      w.localStorage.setItem('token', `Bearer ${token}`);
+      
+      await qns.api.get('/admin/dashboard'); 
+      w.location.href = w.location.origin + '/admin/dashboard';
 
-    if (response.ok) {
-      const json = await response.json();
-      console.log(json);
-    } else {
-      console.log(response.text);
+    } catch (error) {
+      // err.response.data to get server message
+      console.log(error);
     }
   });
 
-})(window, document);
+})(window, document, window.qns = window.qns || {});

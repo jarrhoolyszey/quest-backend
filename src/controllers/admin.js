@@ -1,9 +1,22 @@
 const express = require('express');
+const path = require('path');
+
+const authMiddleware  = require('../middlewares/auth');
+const adminMiddleware = require('../middlewares/admin');
 
 const Admin = require('../models/admin');
 
 const router = express.Router();
 
+router.use(authMiddleware);
+router.use(adminMiddleware);
+
+// Dashboard test
+router.get('/dashboard', (req, res) => {
+  res.render('dashboard/index.html', {});
+})
+
+// CRUD
 // List admins accounts
 router.get('/', async (req, res) => {
   try {
@@ -80,6 +93,7 @@ router.delete('/:adminId', async (req, res) => {
     return res.status(400).send( 'Failed on admin account delete.' );
   }
 });
+
 
 
 module.exports = app => app.use('/admin', router);

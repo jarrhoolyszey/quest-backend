@@ -4,7 +4,9 @@
   const password = d.getElementById('password');
   const submit   = d.getElementById('submit-btn');
 
-  submit.addEventListener('click', async () => {    
+  submit.addEventListener('click', async (e) => {    
+    e.preventDefault();
+    
     try {
       const response = await qns.api.post('auth/admin', {
         nickname: nickname.value,
@@ -15,9 +17,7 @@
 
       qns.api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       w.localStorage.setItem('token', `Bearer ${token}`);
-      
-      await qns.api.get('/admin/dashboard'); 
-      w.location.href = w.location.origin + '/admin/dashboard';
+      w.location.href = w.location.origin + '/panel';
 
     } catch (error) {
       // err.response.data to get server message

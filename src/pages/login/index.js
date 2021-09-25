@@ -1,7 +1,5 @@
 (function (w, d, qns) {
-
   
-
   const nickname = d.getElementById('nickname');
   const password = d.getElementById('password');
   const submit   = d.getElementById('submit-btn');

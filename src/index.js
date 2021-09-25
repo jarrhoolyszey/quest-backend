@@ -9,11 +9,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static('public'));
-
-app.set('views', path.join(__dirname, 'views'));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.use(express.static('src/pages'));
 
 require('./controllers/admin')(app);
 require('./controllers/auth')(app);

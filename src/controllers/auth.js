@@ -67,10 +67,10 @@ router.post('/admin', async (req, res) => {
   const admin = await Admin.findOne({ nickname }).select('+password');
 
   if (!admin)
-    return res.status(401).send({ error: 'Admin not found.' });
+    return res.status(400).send({ error: 'Admin not found.' });
 
   if (!await bcrypt.compare(password, admin.password))
-    return res.status(400).send( 'Invalid password.' );
+    return res.status(400).send({ error: 'Invalid password.' });
   
   admin.password = undefined;
 

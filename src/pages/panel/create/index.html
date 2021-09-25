@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./style.css">
+  <title>Admin Panel</title>
+</head>
+<body>
+  <header>
+
+  </header>
+  <div id="panel-container">
+    <nav id="panel-nav">
+      <spam>Perguntas</spam>
+      <ul>
+        <li class="nav-item active-list-item">Cadastrar</li>
+        <li class="nav-item">Listar</li>
+      </ul>
+    </nav>
+
+    <div id="section-container">
+
+      <form id="form-question">
+        <label for="question">Pergunta:</label>
+        <textarea name="question" id="question" cols="30" rows="5" required></textarea>
+
+        <label for="correct-answer">
+          Alternativa correta: 
+          <input type="text" id="correct-answer" required>
+        </label>
+
+        <label for="wrong-answer-1">
+          Alternativa errada #1:
+          <input type="text" id="wrong-answer-1" required>
+        </label>
+
+        <label for="wrong-answer-2">
+          Alternativa errada #2:
+          <input type="text" id="wrong-answer-2" required>
+        </label>
+
+        <label for="wrong-answer-3">
+          Alternativa errada #3:
+          <input type="text" id="wrong-answer-3" required>
+        </label>
+
+        <button type="submit" id="form-submit">Cadastrar</button>
+      </form>
+      
+    </div>
+  </div>
+  <footer>
+
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../../index.js"></script>
+  <script src="../index.js"></script>
+</body>
+</html>

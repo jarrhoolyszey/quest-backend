@@ -1,0 +1,39 @@
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: lightgreen;
+  height: 80px;
+}
+
+div#panel-container {
+  display: flex;
+  flex-direction: row;
+  
+  flex: 1;
+}
+
+div#panel-container nav {
+  background: yellow;
+  
+  flex: 0 200px;
+}
+
+div#panel-container div#section-container {
+  background: lightblue;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  flex: 1;
+}
+
+footer {
+  background: lightgreen;
+  height: 40px;
+}

@@ -36,21 +36,17 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Log in as User
+// Log in as User - CONSTRUCT
 router.post('/user', async (req, res) => {
-  const { nickname, email, password } = req.body;
+  const { nickname, password } = req.body;
 
-  const user = await User.findOne({
-    $or:[
-      {nickname}, {email}
-    ]
-  }).select('+password');
+  const user = await User.findOne({ nickname }).select('+password');
 
   if (!user)
-    return res.status(400).send({ error: 'User not found.' });
+    return res.status(400).send( 'Usuário não encontrado.' );
 
   if (!await bcrypt.compare(password, user.password))
-    return res.status(400).send({ error: 'Invalid password.' });
+    return res.status(400).send( 'Senha inválida.' );
   
   user.password = undefined;
 

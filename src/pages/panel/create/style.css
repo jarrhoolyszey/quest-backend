@@ -1,0 +1,20 @@
+form#form-question {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+form#form-question textarea#question {
+  resize: none;
+}
+
+form#form-question label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+form#form-question label input {
+  width: 60%;
+}
+

@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 let whitelist = [
   'http://localhost:50000',
   'http://localhost:3000',
-  'https://ies300-quest-backend.herokuapp.com/',
+  'https://ies300-quest-backend.herokuapp.com',
 ];
 
 app.use(cors({
@@ -34,6 +34,10 @@ require('./controllers/admin')(app);
 require('./controllers/auth')(app);
 require('./controllers/question')(app);
 require('./controllers/user')(app);
+
+app.get('/', (req, res) => {
+  return res.send('Pagina inicial funfa!')
+})
 
 app.listen(port, () => {
   console.log(`Server is running at *:${port}`);

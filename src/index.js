@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-let whitelist = ['http://localhost:50000'];
+let whitelist = ['http://localhost:50000', 'http://localhost:3000'];
 
 app.use(cors({
   origin: function(origin, callback){

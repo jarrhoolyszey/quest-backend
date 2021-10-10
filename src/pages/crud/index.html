@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/quest_3.png" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'><!-- Boxicons CDN Link -->
+    <link href="css/style.css" rel="stylesheet">
+    <title>Painel Tarefas | Quest</title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class='bx bx-data'></i>
+                <div class="logo_name">
+                    Quest Database
+                </div>
+            </div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <a href="#" onclick="toggleToHome();return false;">
+                    <i class='bx bx-home'></i>
+                    <span class="links_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="#" onclick="toggleToCadastro();return false;">
+                    <i class='bx bx-pencil'></i>
+                    <span class="links_name">Inserir</span>
+                </a>
+                <span class="tooltip">Inserir dados...</span>
+            </li>
+            <li>
+                <a href="#" onclick="toggleToEditar();return false;">
+                    <i class='bx bx-search-alt'></i>
+                    <span class="links_name">Pesquisar</span>
+                </a>
+                <span class="tooltip">Pesquisar...</span>
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <img src="img/unknownUser.png" alt="">
+                    <div class="name_job">
+                        <div class="name">Quest Admin</div>
+                        <div class="job">Administrador</div>
+                    </div>
+                </div>
+                <a href="#" id="logout-btn" style="color: #fff">
+                    <i class='bx bx-log-out' id="log_out"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="home_content">
+        <div class="text">
+            <div id="home">
+                Bem vindo!<br>
+                Utilize o painel lateral para realizar as tarefas no banco de dados.
+            </div>
+            <div id="cadastro">
+                Create
+                <form name="cadastra_pergunta" id="cadastra_pergunta">
+                    <fieldset>
+                        <legend>Cadastro de Questões</legend>
+
+                        <label for="categoria"><span>Selecione uma categoria:</span>
+
+                            <select name="categoria" id="categoria">
+                                <option selected="selected"></option>
+                                <option value="Mundo">Mundo</option>
+                                <option value="Arte e Entretenimento">Arte e Entretenimento</option>
+                                <option value="Sociedade">Sociedade</option>
+                                <option value="Ciencia e Tecnologia">Ciencia e Tecnologia</option>
+                                <option value="Esporte e Lazer">Esporte e Lazer</option>
+                                <option value="Variedades">Variedades</option>
+                            </select>
+                        </label>
+                        <label for="questao"><span>Digite a pergunta no campo abaixo:</span></label>
+
+                        <textarea id="questao" name="questao" rows="3" cols="50" placeholder="Insira a pergunta aqui."></textarea>
+
+                        <label>
+                            <span>Alternativa correta: </span>
+                            <input type="text" name="correct" id="correct" placeholder="Insira a alternativa correta aqui." class="resp_correta">
+                        </label>
+
+                        <label>
+                            <span>Alternativa incorreta 1: </span>
+                            <input type="text" name="errada_1" id="errada_1" placeholder="Insira a alternativa incorreta aqui." class="resp_incorreta">
+                        </label>
+
+                        <label>
+                            <span>Alternativa incorreta 2: </span>
+                            <input type="text" name="errada_2" id="errada_2" placeholder="Insira a alternativa incorreta aqui." class="resp_incorreta">
+                        </label>
+
+                        <label>
+                            <span>Alternativa incorreta 3: </span>
+                            <input type="text" name="errada_3" id="errada_3" placeholder="Insira a alternativa incorreta aqui." class="resp_incorreta">
+                        </label>
+
+                        <div class="controles">
+                            <button class="btn" type="button" onclick="Limpar();">Limpar</button>
+                            <button id="cadastrar-btn" class="btn" type="button">Cadastrar</button>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+
+            <!--div de edição fará update, delete e pesquisa-->
+            <div id="edicao">
+                Pesquisa, edição e exclusão de Registros.
+                <form name="pesquisa" id="pesquisa">
+                    <fieldset>
+                        <legend>Dados para pesquisa</legend>
+
+                        <label for="categoria_pesquisa">
+                            <span>Selecione uma categoria:</span>
+                            <select name="categoria_pesquisa" id="categoria_pesquisa">
+                                <option selected="selected"></option>
+                                <option value="Mundo">Mundo</option>
+                                <option value="Arte">Arte e Entretenimento</option>
+                                <option value="Sociedade">Sociedade</option>
+                                <option value="Ciência">Ciencia e Tecnologia</option>
+                                <option value="Esporte">Esporte e Lazer</option>
+                                <option value="Variedades">Variedades</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            <span>Insira um termo para pesquisar: </span>
+                            <input type="text" name="termo_pesq" id="termo_pesq" placeholder="Palavra, termo ou assunto da questão.">
+                        </label>
+
+                        <div class="controles">
+                            <button class="btn" type="button" onclick="LimparPesquisa();">Limpar</button>
+                            <button id="pesquisar-btn" class="btn" type="button">Pesquisar</button>
+                        </div>
+
+                    </fieldset>
+                </form>
+
+                <!-- A DIV ABAIXO É APENAS PARA MOSTRAR QUE NÃO HOUVE NENHUM RETORNO -->
+                <div id="retorno_negativo">
+                    <fieldset>
+                        <legend>Retorno da pesquisa</legend>
+                        <span style="color:red;display: inherit; text-align: center">Não encontramos nenhum registro na base de dados com os campos de sua pesquisa.</span>
+                    </fieldset>
+                </div>
+                <!--Div retorno negativo não existem perguntas cadastradas -->
+
+                <!-- A DIV ABAIXO APRESENTA AS QUESTOES RETORNADAS -->
+                <div id="retorno_positivo">
+                    <div id="questoes">
+
+                    </div>
+                </div>
+                <!--Div retorno positivo existem perguntas cadastradas -->
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Programação em Javascript-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../index.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/crud.js"></script>
+</body>
+
+</html>

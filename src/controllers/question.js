@@ -11,8 +11,13 @@ router.use(adminMiddleware);
 
 // List all questions
 router.get('/', async (req, res) => {
+  const { category, term } = req.query;
+
   try {
-    const questions = await Question.find();
+    const questions = await Question.find({
+      category: { $regex: category },
+      question: { $regex: term },
+    });
 
     return res.send( questions );
   } catch (err) {

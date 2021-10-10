@@ -11,9 +11,31 @@
 
   // Verifica se existe um token no localStorage
   qns.verifyToken =  function () {
-    if(!w.localStorage.getItem('token')) {
+
+    const token = w.localStorage.getItem('token'); 
+    if(!token) {
       console.log('não esta autenticado!');
       w.location.href = w.location.origin + '/login';
+      return;
+    }
+
+    qns.api.defaults.headers.common['Authorization'] = `${token}`;
+  }
+
+  qns.logout = function () {
+    const token = w.localStorage.getItem('token');
+
+    if(token) {
+      w.localStorage.removeItem('token');
+      w.location.href = w.location.origin + '/login';
+    }
+  };
+
+  qns.autoLogin = function () {
+    const token = w.localStorage.getItem('token');
+
+    if(token) {
+      w.location.href = w.location.origin + '/crud';
     }
   }
   

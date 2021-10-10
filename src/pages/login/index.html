@@ -1,29 +1,37 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Quest Dashborad</title>
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="./style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Login page</title>
 </head>
+
 <body>
-  <form action="#">
-    <h2>Admin Panel Login:</h2>
-    <label for="nickname">
-      Nickname:
-      <input type="text" id="nickname">
-    </label>
-    <label for="password">
-      Password:
-      <input type="password" id="password">
-    </label>
-    <button type="submit" id="submit-btn">Entrar</button>
-  </form>
-  
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="../index.js"></script>
-  <script src="./index.js"></script>
+    <div class="container">
+        
+        <div class="container-login">
+            
+            <!-- <form action="../crud/index.html" method="POST"> -->
+            <form id="login-form">
+                <img class="avatar" src="img/quest.png" alt="area de login">
+                <div class="welcome">Bem vindo</div>
+                <input type="text" placeholder="Usuario" id="nickname">
+                <input type="password" placeholder="Password" id="password">
+                <!--<div class="account-options">
+                    <a href="#">Create account</a>
+                    <a href="#">Forgot password</a>
+                </div>-->
+                <button id="submit-btn">Login</button>
+
+            </form>    
+        
+        </div>
+    
+    </div>
+    <!-- Programação em Javascript-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../index.js"></script> <!-- JS global -->
+    <script src="js/utils.js"></script>
 </body>
 </html>

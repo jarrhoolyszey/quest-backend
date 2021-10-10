@@ -36,7 +36,7 @@ require('./controllers/question')(app);
 require('./controllers/user')(app);
 
 app.get('/', (req, res) => {
-  return res.send('Pagina inicial funfa!')
+  return res.redirect('/login');
 })
 
 app.listen(port, () => {

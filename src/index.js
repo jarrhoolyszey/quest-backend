@@ -11,6 +11,8 @@ let whitelist = [
   'http://localhost:50000',
   'http://localhost:3000',
   'https://ies300-quest-backend.herokuapp.com',
+  'https://quest-f533f.web.app/',
+  'https://quest-f533f.firebaseapp.com/'
 ];
 
 app.use(cors({

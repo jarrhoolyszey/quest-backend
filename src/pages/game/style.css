@@ -1,0 +1,192 @@
+/*************** Variables **************/
+:root {
+	/* text colors */
+	--in-dark: #F1F1F1;
+	--in-light: #07042A;
+
+	/* pallete colors */
+	--white: #F1F1F1;
+	--blue: #07042A;
+	--yellow: #F8C30B;
+}
+
+/*************** Reset **************/
+*, *::after, *::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/*************** Login Layout **************/
+input {
+	outline: none;
+	border: none;
+	font-weight: bold;
+	background-color: transparent;
+	background-size: 100% 100%;
+	width: 21.8rem;
+}
+
+#input-email, #input-password, #reg-name, #reg-email, #reg-password, #cr-name, #cr-quantity {
+	color: var(--in-dark);
+	padding: 0 0.5rem;
+	text-align: center;
+	background-image: url('./text_box_bg.png');
+}
+
+input[type="button"] {	
+	transition: .1s ease-out;
+}
+
+input[type="button"]:hover:not([disabled]) {
+	transform: scale(1.05);
+}
+
+input[type="button"]:disabled {
+	filter: grayscale(80%);
+}
+
+#login-btn {
+	background-image: url('./entrar_btn.png');
+}
+
+#google-btn {
+	background-image: url('./google_btn.png');
+}
+
+#facebook-btn {
+	background-image: url('./facebook_btn.png');
+}
+
+#register-btn {
+	color: var(--in-light);
+	background-color: var(--yellow);
+	border: 0.125rem solid var(--blue);
+	border-radius: 0.437rem;
+	font-weight: bold;
+}
+
+/****************** Register Layout ******************/
+#reg-register-btn {
+	background-image: url('./register_btn.png');
+}
+
+#reg-cancel-btn {
+	background-image: url('./cancel_btn.png');
+}
+
+/****************** Lobby Layout ******************/
+#lob-rooms-list {
+	background: var(--blue);
+	opacity: .9;
+	border: 0.437rem solid var(--white);
+	border-top-left-radius: .937rem;
+	border-bottom-left-radius: .937rem;
+	outline: none;
+	padding: 0.437rem;
+	overflow-x: hidden;
+}
+
+#lob-rooms-list option {
+	padding: 0.5rem 1.5rem;
+	margin-bottom: 0.5rem;
+	color: var(--in-dark);
+	font-size: 1.5rem;
+	font-weight: bold;
+	border-top-left-radius: .460rem;
+	border-top-left-radius: .460rem;
+}
+
+#lob-rooms-list option:hover,
+#lob-rooms-list option:focus {
+	background-color: var(--yellow);
+	color: var(--in-light);
+}
+
+#lob-criar-btn, #lob-entrar-btn, #lob-refresh-btn {
+	background-color: var(--yellow);
+	color: var(--in-light);
+	border: 0.312rem solid var(--white);
+	border-radius: 0.437rem;
+	font-size: .875rem;
+}
+
+/****************** Create Room Layout ******************/
+#cr-name, #cr-quantity {
+	background-image: url('./text_box_bg.png');
+}
+
+#cr-create-btn {
+	background-image: url('./criar_sala_large_btn.png');
+}
+
+#cr-cancel-btn {
+	background-image: url('./cancel_btn.png');
+}
+
+/********************** Sync Room *********************/
+#sync-init-btn {
+	color: var(--in-dark);
+	background-color: var(--blue);
+}
+
+#sync-init-btn:disabled {
+	opacity: .2;
+}
+
+/****************** Game Room Layout ******************/
+#game-chat-text {
+	background: transparent;
+	border: none;
+	outline: none;
+	line-height: 1rem;
+	font-weight: bold;
+	color: black;
+	padding: 0 0.5rem;
+}
+
+#game-chat-input {
+	background: var(--white);
+	border: 0.187rem solid var(--blue);
+	color: var(--in-light);
+	padding: 0.5rem;
+}
+
+#game-send-btn {
+	background: lightgreen;
+	border-radius: 5px;
+}
+
+/* Botões de controle do tabueiro */
+#move-left-btn, #move-right-btn {
+	border: none;
+	border-radius: 50%;
+	background-color: lightgray;
+	font-weight: bold;
+	opacity: 0.2;
+	transition: all 0.4 ease-in-out;
+}
+
+#move-left-btn:hover, #move-right-btn:hover {
+	border: solid 2px var(--blue);
+	opacity: 0.8;
+}
+
+/* Botões do Modal de Apostas */
+#aposta-btn-1, #aposta-btn-2, #aposta-btn-3,
+#aposta-btn-4, #aposta-btn-5 {
+	border-radius: 50%;
+	border: solid 4px white;
+	color: white;
+}
+
+#aposta-btn-1:disabled, #aposta-btn-2:disabled,
+#aposta-btn-3:disabled, #aposta-btn-4:disabled,
+#aposta-btn-5:disabled {
+	opacity: 0.2;
+}

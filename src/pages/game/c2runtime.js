@@ -25418,4 +25418,3 @@ cr.getObjectRefTable = function () { return [
 	cr.behaviors.lunarray_LiteTween.prototype.acts.Start,
 	cr.plugins_.Sprite.prototype.acts.SetBoolInstanceVar
 ];};
-

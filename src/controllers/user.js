@@ -18,6 +18,25 @@ router.get('/list', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  try {
+    const { nickname, password } = req.body;
+
+    const user = await User.create({
+      nickname,
+      password,
+    });
+
+    if(user) {
+      return res.send('Usuário criado com sucesso!');
+    }
+
+  } catch (err) {
+    console.log(err.message);
+    return res.status(400).send( 'Falha no cadastro de usuário' );
+  }
+})
+
 // Get Question by Category for Players (Users)
 router.get('/', async (req, res) => {
   const { category } = req.query;

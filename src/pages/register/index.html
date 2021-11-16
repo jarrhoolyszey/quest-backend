@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Quest - Cadastro</title>
+</head>
+<body>
+
+  <div id="container">
+    <div id="form-wrapper">
+      <img src="imgs/logo.png" alt="logo-quest">
+
+      <form>
+        <h3>CADASTRO:</h3> 
+        
+        <div class="form-line">
+          <label for="nickname">NICKNAME:</label>
+          <input type="text" name="nickname" minlength="4" required>
+        </div>
+        
+        <div class="form-line">
+          <label for="password">SENHA:</label>
+          <input type="password" name="password" minlength="6" required>
+        </div>
+
+        <div class="form-line">
+          <label for="confirm-password">CONFIRMAR SENHA:</label>
+          <input type="password" name="confirm-password"  minlength="6" required>
+        </div>
+
+        <p id="log-txt">Texto de erro</p>
+
+        <button type="submit" id="register-btn">ENVIAR</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../index.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

@@ -7,16 +7,17 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-    lowercase: true,
-  },
   password: {
     type: String,
     required: true,
     select: false,
+  },
+  email: {
+    type: String,
+    lowercase: true,
+  },
+  avatarUrl: {
+    type: String,
   },
   createdAt: {
     type: Date,

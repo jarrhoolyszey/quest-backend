@@ -66,8 +66,13 @@ router.post('/', async (req, res) => {
 
 // Get Question by Category for Players (Users) with blocklist ids
 router.post('/get-question', async (req, res) => {
-  const { category, blacklist } = req.body;
+  //console.log("requisição body: ", req.body);
+  // Hack for Construct 2 POST request compatibility
+  const data = JSON.parse(Object.keys(req.body)[0]);
+  
+  const { category, blacklist } = data;
   const N = 10; // quantidade de perguntas para filtrar
+
 
   try {
     let questions = [];

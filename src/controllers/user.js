@@ -1,4 +1,5 @@
 const express = require('express');
+const ObjectId = require('mongoose').Types.ObjectId;
 
 const User = require('../models/user');
 const Question = require('../models/question');
@@ -73,18 +74,24 @@ router.post('/get-question', async (req, res) => {
   const { category, blacklist } = data;
   const N = 10; // quantidade de perguntas para filtrar
 
+  // Converte as strings do blacklist para ObjectId para fazer a query $nin
+  let _ids = [];
+  for(let i=0; i<blacklist.length; i++) {
+    _ids[i] = new ObjectId(blacklist[i]);
+  }
+
 
   try {
     let questions = [];
     
     if (category !== 'Random') {
       questions = await Question.aggregate([
-        { $match: { category: { $regex: category }, _id: { $nin: blacklist } } },
+        { $match: { category: { $regex: category }, _id: { $nin: _ids } } },
         { $sample: { size: N } }
       ]);
     } else {
       questions = await Question.aggregate([
-        { $match: { _id: { $nin: blacklist } } },
+        { $match: { _id: { $nin: _ids } } },
         { $sample: { size: N } }
       ]);
     }

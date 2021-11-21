@@ -38,33 +38,6 @@ router.post('/', async (req, res) => {
   }
 })
 
-// // Get Question by Category for Players (Users)
-// router.get('/', async (req, res) => {
-//   const { category } = req.query;
-  
-//   try {
-//     let questions = [];
-    
-//     if (category !== 'Random') {
-//       questions = await Question.find({
-//         category: { $regex: category }
-//       });
-//     } else {
-//       questions = await Question.find();
-//     }
-
-//     if (questions) {
-//       const question = questions[Math.floor(Math.random() * questions.length)];
-
-//       return res.status(200).send(question);
-//     }
-
-//   } catch (err) {
-//     console.log(err);
-//     return res.status(400).send( 'Error on getting question.' );
-//   }
-// })
-
 // Get Question by Category for Players (Users) with blocklist ids
 router.post('/get-question', async (req, res) => {
   //console.log("requisição body: ", req.body);

@@ -1,6 +1,20 @@
 const mongoose = require('../database');
 const bcrypt = require('bcryptjs');
 
+const defAvatars = [
+  "squirtle.png",
+  "bubassauro.png",
+  "roxo.png",
+  "pikachu.png",
+];
+
+const defPins = [
+  "pin_azul.png",
+  "pin_verde.png",
+  "pin_roxo.png",
+  "pin_amarelo.png",
+]
+
 const UserSchema = new mongoose.Schema({
   nickname: {
     type: String,
@@ -16,8 +30,35 @@ const UserSchema = new mongoose.Schema({
     type: String,
     lowercase: true,
   },
-  avatarUrl: {
-    type: String,
+  avatar: {
+    current: {
+      type: String,
+      default: defAvatars[Math.floor(Math.random() * defAvatars.length)],
+    },
+    options: {
+      type: [String],
+      default: defAvatars,
+    }
+  },
+  pin: {
+    current: {
+      type: String,
+      default: defPins[Math.floor(Math.random() * defPins.length)],
+    },
+    options: {
+      type: [String],
+      default: defPins,
+    }
+  },
+  decks: {
+    current: {
+      type: String,
+      default: "default",
+    },
+    options: {
+      type: [String],
+      default: ["default"],
+    },
   },
   createdAt: {
     type: Date,

@@ -1,10 +1,39 @@
 const express = require('express');
 const ObjectId = require('mongoose').Types.ObjectId;
 
+const Auth = require('../middlewares/auth');
+
 const User = require('../models/user');
 const Question = require('../models/question');
 
 const router = express.Router();
+
+
+// Update User adding some Avatar to him
+router.post('/update', Auth, async (req, res) => {
+  const { avatar } = req.query;
+  const { id, nickname } = req;
+  console.log(id, nickname);
+
+  try {
+    let user = await User.findOne(
+      { _id: id, nickname }
+    );
+
+    // add desired avatar url to use avatar options
+    user.avatar.options.push(avatar);
+    
+    const _user = await User.findOneAndUpdate({ _id: id, nickname}, user, { new: true });
+
+    if(_user)
+      return res.send(_user);
+
+
+  } catch (err) {
+    console.log(err.message);
+    return res.status(400).send( 'Failed on update user.' );
+  }
+});
 
 // List all users
 router.get('/list', async (req, res) => {
